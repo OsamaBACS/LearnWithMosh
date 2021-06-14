@@ -1,0 +1,10 @@
+<i
+  class="bi"
+  [class.bi-star]="isFavourit"
+  [class.bi-star-fill]="!isFavourit"
+  (click)="onClick()"
+></i>
+<hr />
+<input type="text" class="form-control" [(ngModel)]="title" />
+<hr />
+{{ title | titleCase }}
