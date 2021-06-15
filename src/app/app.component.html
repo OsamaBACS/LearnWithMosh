@@ -4,4 +4,4 @@
 <courses></courses>
 <hr />
 <app-author></app-author> -->
-<favourite></favourite>
+<favourite [isFavorite]="post.isFavorite" (change)="onFavoriteChange()"></favourite>
