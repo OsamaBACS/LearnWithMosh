@@ -11,7 +11,12 @@ import { AuthorService } from './author.service';
 import { SummaryPipes } from './summary.pipe';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { TitleCasePipe } from './title-case.pipe';
+import { PanelComponent } from './panel/panel/panel.component';
+import { LikeComponent } from './like/like/like.component';
+import { InputFormatDirective } from './input-format.directive';
+import { ZippyComponent } from './zippy/zippy.component';
 
+// Here we add All Components, Pipes, Directives
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,8 +27,13 @@ import { TitleCasePipe } from './title-case.pipe';
     FavouriteComponent,
     TitleCasePipe,
     TitleCasePipe,
+    PanelComponent,
+    LikeComponent,
+    InputFormatDirective,
+    ZippyComponent,
   ],
   imports: [BrowserModule, FormsModule],
+  // Here we add All Services
   providers: [CoursesService, AuthorService],
   bootstrap: [AppComponent],
 })

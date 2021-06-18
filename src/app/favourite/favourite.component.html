@@ -4,6 +4,15 @@
   [class.bi-star-fill]="!isSelected"
   (click)="onClick()"
 ></i>
+<!-- OR -->
+<i
+  class="bi"
+  [ngClass]="{
+    'bi-star': isSelected,
+    'bi-star-fill': !isSelected
+  }"
+  (click)="onClick()"
+></i>
 <hr />
 <input type="text" class="form-control" [(ngModel)]="title" />
 <hr />

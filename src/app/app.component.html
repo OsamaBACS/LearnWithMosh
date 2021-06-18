@@ -4,4 +4,94 @@
 <courses></courses>
 <hr />
 <app-author></app-author> -->
-<favourite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favourite>
+<favourite
+  [isFavorite]="post.isFavorite"
+  (change)="onFavoriteChange($event)"
+></favourite>
+<hr />
+<bootstrap-panel>
+  <<<ng-container class="heading">My Heading</ng-container>
+  <div class="body">
+    <h4>Body</h4>
+    <p>Some Content Here....</p>
+  </div>
+</bootstrap-panel>
+<hr />
+<hr />
+<like [likesCount]="tweets.likesCount" [isActive]="tweets.isLiked"></like>
+<hr />
+<hr />
+<!-- Angular Directives -->
+<div *ngIf="courses.length > 0; else noCourses">List of Courses</div>
+<ng-template #noCourses> No Courses Yet! </ng-template>
+<!-- OR --><br />
+<div *ngIf="courses.length > 0; then coursesList; else noCourses"></div>
+<ng-template #coursesList> List of Courses </ng-template>
+<ng-template #noCourses> No Courses Yet! </ng-template>
+<!-- OR use Heddin Attribute --><br />
+<div [hidden]="courses.length == 0">List of Courses</div>
+<div [hidden]="courses.length > 0">No Courses yet!</div>
+<hr />
+<hr />
+<!-- NgSwith Case -->
+<nav class="nav nav-pills">
+  <a
+    (click)="viewMode = 'map'"
+    [class.active]="viewMode == 'map'"
+    class="nav-link"
+    >Map View</a
+  >
+  <a
+    (click)="viewMode = 'list'"
+    [class.active]="viewMode == 'list'"
+    class="nav-link"
+    >List View</a
+  >
+</nav>
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'map'">Map View Content</div>
+  <div *ngSwitchCase="'list'">List View Content</div>
+  <div *ngSwitchDefault>Otherwise</div>
+</div>
+<hr />
+<hr />
+<!-- ng For -->
+<button (click)="loadCourses()">Load Courses</button>
+<button (click)="onAdd()">Add</button>
+<ul>
+  <!-- use Index -->
+  <li *ngFor="let student of students; index as i">
+    {{ i }} - {{ student.name }}
+    <button (click)="onRemove(student)">Remove</button>
+    <button (click)="onChange(student)">Update</button>
+  </li>
+  ------------
+  <!-- use Even -->
+  <li *ngFor="let student of students; even as isEven">
+    {{ student.name }} <span *ngIf="isEven">(EVEN)</span>
+    <button (click)="onRemove(student)">Remove</button>
+    <button (click)="onChange(student)">Update</button>
+  </li>
+  <!-- use Track By -->
+  <!-- use Even -->
+  <li *ngFor="let student of students; trackBy: trackStudent">
+    {{ student.name }}
+  </li>
+</ul>
+<br />
+<hr />
+<button
+  [ngStyle]="{
+    backgroundColor: canSave ? 'blue' : 'gray',
+    color: canSave ? 'white' : 'black',
+    fontWeight: canSave ? 'boold' : 'normal'
+  }"
+>
+  Save
+</button>
+<hr />
+----------------------------<br />
+<input type="text" [appInputFormat]="'uppercase'" />
+<hr />
+----------------------------<br />
+<zippy title="Shipping Detailes"> Shipping Detailes Content </zippy>
