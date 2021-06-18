@@ -15,6 +15,7 @@ import { PanelComponent } from './panel/panel/panel.component';
 import { LikeComponent } from './like/like/like.component';
 import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 // Here we add All Components, Pipes, Directives
 @NgModule({
@@ -31,6 +32,7 @@ import { ZippyComponent } from './zippy/zippy.component';
     LikeComponent,
     InputFormatDirective,
     ZippyComponent,
+    ContactFormComponent,
   ],
   imports: [BrowserModule, FormsModule],
   // Here we add All Services
