@@ -1,22 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'new-course-form',
   templateUrl: './new-course-form.component.html',
   styleUrls: ['./new-course-form.component.css'],
 })
-export class NewCourseFormComponent implements OnInit {
-  categories = [
-    { id: 1, name: 'Development' },
-    { id: 2, name: 'Arts' },
-    { id: 3, name: 'Languages' },
-  ];
+export class NewCourseFormComponent {
+  // categories = [
+  //   { id: 1, name: 'Development' },
+  //   { id: 2, name: 'Arts' },
+  //   { id: 3, name: 'Languages' },
+  // ];
+  form = new FormGroup({
+    topics: new FormArray([])
+  });
 
   constructor() {}
 
-  ngOnInit(): void {}
-
   submit(f: any) {
     console.log(f);
+  }
+
+  addTopic(topic: HTMLInputElement){
+    (this.form.get('topics') as FormArray).push(new FormControl(topic.value));
+    topic.value = '';
   }
 }
