@@ -23,7 +23,15 @@ export class NewCourseFormComponent {
   }
 
   addTopic(topic: HTMLInputElement){
-    (this.form.get('topics') as FormArray).push(new FormControl(topic.value));
+    this.formData.push(new FormControl(topic.value));
     topic.value = '';
+  }
+
+  get formData(){
+    return <FormArray>this.form.get('topics');
+  }
+
+  removeTopic(){
+
   }
 }
