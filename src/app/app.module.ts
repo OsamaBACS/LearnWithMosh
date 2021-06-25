@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -19,6 +20,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostService } from './services/post.service';
 
 // Here we add All Components, Pipes, Directives
 @NgModule({
@@ -39,10 +42,11 @@ import { ChangePasswordFormComponent } from './change-password-form/change-passw
     NewCourseFormComponent,
     SignupFormComponent,
     ChangePasswordFormComponent,
+    PostsComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   // Here we add All Services
-  providers: [CoursesService, AuthorService],
+  providers: [CoursesService, AuthorService, PostService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
