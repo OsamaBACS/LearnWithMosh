@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses.component';
@@ -22,6 +23,12 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostService } from './services/post.service';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NotFoundError } from './common/not-found-error';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
 
 // Here we add All Components, Pipes, Directives
 @NgModule({
@@ -43,8 +50,24 @@ import { PostService } from './services/post.service';
     SignupFormComponent,
     ChangePasswordFormComponent,
     PostsComponent,
+    GithubFollowersComponent,
+    NavbarComponent,
+    NotFoundComponent,
+    HomeComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'followers/:username', component: GithubProfileComponent },
+      { path: 'followers', component: GithubFollowersComponent },
+      { path: 'posts', component: PostsComponent },
+      { path: '**', component: NotFoundComponent },
+    ]),
+  ],
   // Here we add All Services
   providers: [CoursesService, AuthorService, PostService],
   bootstrap: [AppComponent],
