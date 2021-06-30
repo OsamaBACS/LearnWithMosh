@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +29,8 @@ import { NotFoundError } from './common/not-found-error';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { GithubFollowersService } from './services/github-followers.service';
+import { AppErrorHandler } from './common/app-error-handler';
 
 // Here we add All Components, Pipes, Directives
 @NgModule({
@@ -69,7 +71,8 @@ import { GithubProfileComponent } from './github-profile/github-profile.componen
     ]),
   ],
   // Here we add All Services
-  providers: [CoursesService, AuthorService, PostService],
+  providers: [CoursesService, AuthorService, PostService, GithubFollowersService,
+    { provide: ErrorHandler, useClass: AppErrorHandler }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
