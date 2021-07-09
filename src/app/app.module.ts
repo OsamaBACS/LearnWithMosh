@@ -53,6 +53,7 @@ import { AppErrorHandler } from './common/app-error-handler';
     ChangePasswordFormComponent,
     PostsComponent,
     GithubFollowersComponent,
+    GithubProfileComponent,
     NavbarComponent,
     NotFoundComponent,
     HomeComponent,
@@ -64,15 +65,20 @@ import { AppErrorHandler } from './common/app-error-handler';
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'followers/:id', component: GithubProfileComponent },
+      { path: 'followers/:id/:username', component: GithubProfileComponent },
       { path: 'followers', component: GithubFollowersComponent },
       { path: 'posts', component: PostsComponent },
       { path: '**', component: NotFoundComponent },
     ]),
   ],
   // Here we add All Services
-  providers: [CoursesService, AuthorService, PostService, GithubFollowersService,
-    { provide: ErrorHandler, useClass: AppErrorHandler }],
+  providers: [
+    CoursesService,
+    AuthorService,
+    PostService,
+    GithubFollowersService,
+    { provide: ErrorHandler, useClass: AppErrorHandler },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
