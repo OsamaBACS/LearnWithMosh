@@ -31,6 +31,7 @@ import { HomeComponent } from './home/home.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { GithubFollowersService } from './services/github-followers.service';
 import { AppErrorHandler } from './common/app-error-handler';
+import { ArchiveComponent } from './archive/archive.component';
 
 // Here we add All Components, Pipes, Directives
 @NgModule({
@@ -57,6 +58,7 @@ import { AppErrorHandler } from './common/app-error-handler';
     NavbarComponent,
     NotFoundComponent,
     HomeComponent,
+    ArchiveComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,8 @@ import { AppErrorHandler } from './common/app-error-handler';
       { path: 'followers/:id/:username', component: GithubProfileComponent },
       { path: 'followers', component: GithubFollowersComponent },
       { path: 'posts', component: PostsComponent },
+      { path: '', component: HomeComponent},
+      { path: 'archive/:year/:month', component: ArchiveComponent},
       { path: '**', component: NotFoundComponent },
     ]),
   ],

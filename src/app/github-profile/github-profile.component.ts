@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'github-profile',
@@ -7,12 +7,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./github-profile.component.css'],
 })
 export class GithubProfileComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+
+  constructor(private router: Router) {}
+
+  submit(){
+    this.router.navigate(['/followers'], {
+      queryParams: { page: 1, order: 'newest'}
+    });
+  }
 
   ngOnInit() {
     //This is the actual paramMap object and not Observable
-    let id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
+    // let id = this.route.snapshot.paramMap.get('id');
+    // console.log(id);
     // this.route.paramMap.subscribe((params) => {
     //   //let id = Number(params.get('id'));
     //   console.log(params.get('id'));
